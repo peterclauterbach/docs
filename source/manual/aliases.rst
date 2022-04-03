@@ -42,6 +42,9 @@ OPNsense offers the following alias types:
 | (advanced)       | placeholder. Content is set from another source      |
 |                  | (plugin, api call, etc)                              |
 +------------------+------------------------------------------------------+
+| Internal         | Internal aliases defined by OPNsense.                |
+| (product)        |                                                      |
++------------------+------------------------------------------------------+
 
 ..................
 Hosts
@@ -284,6 +287,20 @@ alias and add or remove entries immediately.
 
     Since external alias types won't be touched by OPNsense, you can use :code:`pfctl` directly in scripts to manage
     its contents. (e.g. :code:`pfctl -t MyAlias -T add 10.0.0.3` to add **10.0.0.3** to **MyAlias**)
+
+.. Note::
+
+    For plugin developers, static network definitions can be registered in :code:`/usr/local/opnsense/mvc/app/models/OPNsense/Firewall/static_aliases/`
+    in json format. The :code:`core.json` file can be used as an example.
+    Using these files avoid the need of manual alias registration in the model. (available as of OPNsense 22.7)
+
+
+..................
+Internal
+..................
+
+Internal (product) aliases are used to offer a transparant interface into statically defined types of networks which
+are handled internally by the product.
 
 
 ----------------------------------
